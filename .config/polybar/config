@@ -1,0 +1,488 @@
+# Configuration by Marin Rukavina
+# based on dotfiles by Aditya Shakya
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[color]
+white = #fff
+base = #efebe0
+brown = #666
+orange = #fbb253
+orange2 = #ef7922
+purple = #e58a95
+red = #f1383d
+#red = #ff5555
+pink = #f26262
+pink2 = #f64d64
+blue = #19aed3
+cyan = #00bcd4
+yellowgreen = #b8e716
+adapta = #263238
+
+[custom]
+wlan_iface = wlp2s0
+
+[bar/top]
+monitor = eDP-1
+override-redirect = false
+bottom = false
+fixed-center = true
+
+width = 100%
+height = 50
+
+dpi = 220
+
+font-0 = "Noto Sans Mono:size=8;3"
+font-1 = "FontAwesome:pixelsize=9;3"
+font-2 = "3270Medium Nerd Font:size=10;4"
+
+background = ${color.adapta}
+foreground = ${color.white}
+
+line-color = ${color.cyan}
+underline-size = 0
+overline-size = 0
+
+border-bottom-size = 2
+border-bottom-color = ${color.cyan}
+
+padding-left = 2
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+tray-position = right
+tray-padding = 0
+tray-maxsize = 1000
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+# Mod Loc ####################################################
+
+modules-left = osmenu xwindow
+modules-center = i3
+modules-right = bluetooth battery date powermenu
+
+[bar/bottom]
+monitor = eDP-1
+override-redirect = false
+bottom = true
+fixed-center = true
+
+width = 100%
+height = 50
+
+dpi = 220
+
+font-0 = "Noto Sans Mono:size=8;3"
+font-1 = "FontAwesome:pixelsize=9;3"
+font-2 = "3270Medium Nerd Font:size=10;4"
+
+background = ${color.adapta}
+foreground = ${color.white}
+
+line-color = ${color.cyan}
+underline-size = 0
+overline-size = 0
+
+border-top-size = 2
+border-top-color = ${color.cyan}
+
+padding-left = 2
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+tray-position = right
+tray-padding = 0
+tray-maxsize = 16
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+# Mod Loc ####################################################
+
+modules-left = mpd
+modules-center = home cpu memory wifi wlan
+modules-right = volumebar brightnessbar xkeyboard
+
+# Modules ####################################################
+
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+label = %title%
+label-maxlen = 75
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+wrapping-scroll = false
+
+label-focused =%name%
+label-focused-foreground = ${color.cyan}
+label-focused-background = ${color.adapta}
+label-focused-padding = 1
+
+label-unfocused =%name%
+label-unfocused-padding = 1
+
+label-visible =%name%
+label-visible-padding = 1
+
+label-urgent =%name%
+label-urgent-background = ${color.adapta}
+label-urgent-foreground = ${color.red}
+label-urgent-padding = 1
+
+[module/battery]
+type = internal/battery
+full-at = 98
+time-format = %H:%M
+battery = BAT0
+adapter = AC
+
+format-charging = <animation-charging> <label-charging>
+label-charging = %percentage%% (%time%)
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage%% (%time%)
+
+format-full = <label-full>
+format-full-prefix = " "
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-7 = 
+animation-charging-8 = 
+animation-charging-framerate = 750
+animation-charging-background = ${color.adapta}
+animation-charging-foreground = ${color.yellowgreen}
+
+# Another Icon ######
+
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
+;animation-charging-framerate = 750
+
+[module/volume]
+type = internal/alsa
+
+;speaker-mixer = Speaker
+;headphone-mixer = Headphone
+;headphone-id = 16
+;mapped = true
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+
+format-muted-prefix = " "
+label-muted = MUTE
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+ramp-volume-7 = 
+ramp-volume-8 = 
+ramp-volume-9 = 
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+click-right = pavucontrol
+
+[module/date]
+type = internal/date
+interval = 30
+label =  %time%
+time =  %a %d-%m-%Y %H:%M
+#time =  %b %e %Y %H:%M
+#time-alt =  %Y-%m-%d
+
+##### Text / Icon / Launchers ##################
+
+[module/osmenu]
+type = custom/text
+
+#content = 
+content = " "
+content-background = ${color.adapta}
+content-foreground = ${color.pink2}
+;content-padding = 4
+
+click-left = "dmenu_run -i -fn 'Noto Sans Mono:regular:pixelsize=35' -nb '#263238' -nf '#ffffff' -sf '#263238' -sb '#00bcd4'"
+#click-left = rofi-apps
+#click-middle = "dmenu-run"
+#click-right = rofi -show run
+
+################################################
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${color.cyan}
+label-close =  cancel
+label-close-foreground = ${color.cyan}
+label-separator = |
+label-separator-foreground = ${color.cyan}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = shutdown
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = systemctl reboot
+
+menu-2-0 = shutdown
+menu-2-0-exec = systemctl poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${color.white}
+;format-prefix-underline = ${color.white}
+
+label-layout = %layout%
+label-layout-underline = ${color.white}
+
+label-indicator-padding = 0
+;label-indicator-margin = 1
+label-indicator-background = ${color.adapta}
+label-indicator-foreground = ${color.cyan}
+;label-indicator-underline = ${color.cyan}
+
+[module/home]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+;label-mounted =  %percentage_used%%
+label-mounted =  %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${color.pink}
+
+[module/lan]
+type = internal/network
+interface = eth1
+
+[module/wlan]
+type = internal/network
+interface = ${custom.wlan_iface}
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+;format-connected-underline = #9f78e1
+label-connected = %essid% / %signal%% / %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${color.blue}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+;ramp-signal-foreground = ${color.cyan}
+
+[module/bluetooth]
+type = custom/script
+interval = 5
+
+exec = ~/.config/polybar/bluetooth.sh
+click-left = blueman-manager
+
+[module/wifi]
+type = internal/network
+interface = ${custom.wlan_iface}
+interval = 1.0
+;udspeed-minwidth = 0
+
+format-connected = <label-connected>
+label-connected = %downspeed:8%  祝%upspeed:8%
+format-disconnected =
+
+[module/cpu]
+type = internal/cpu
+label = %percentage%%
+interval = 2
+#format-prefix = "ﱡ "
+format-prefix = "﬙ "
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %mb_used%
+format-prefix = " "
+
+[module/mpd]
+type = internal/mpd
+format-online = ﱘ  <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+;icon-prev = 
+;icon-stop = 
+;icon-play = 
+;icon-pause = 
+;icon-next = 
+
+icon-prev = 玲
+icon-stop = 栗
+;icon-stop = 
+icon-play = 契
+icon-pause = 
+icon-next = 怜
+
+label-song-maxlen = 35
+label-song-ellipsis = true
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${color.red}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+;ramp-foreground = ${color.cyan}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted =  %free%
+format-mounted-padding = 1
+;format-mounted-background = ${color.cyan}
+;format-mounted-underline = ${color.cyan}
+
+label-unmounted =   %mountpoint%
+format-unmounted-padding = 1
+;format-unmounted-background = ${color.red}
+;format-unmounted-underline = ${color.red}
+
+# Bars ######################################################
+
+[module/brightnessbar]
+type = internal/backlight
+
+card = intel_backlight
+
+format = <label>  <bar>
+label = 
+
+bar-width = 10
+bar-indicator = >
+bar-indicator-foreground = ${color.cyan}
+bar-indicator-font = 1
+bar-fill = ─
+bar-fill-font = 1
+bar-fill-foreground = ${color.cyan}
+bar-empty = ─
+bar-empty-font = 1
+bar-empty-foreground = ${color.cyan}
+
+[module/volumebar]
+type = internal/alsa
+
+;master-soundcard = hw:0
+;speaker-soundcard = hw:0
+;headphone-soundcard = hw:0
+;master-mixer = Master
+;speaker-mixer = Speaker
+;headphone-mixer = Headphone
+;headphone-id = 1
+
+format-volume = <ramp-volume> <label-volume> <bar-volume>
+label-volume = %percentage%%
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+ramp-volume-7 = 
+ramp-volume-8 = 
+ramp-volume-9 = 
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+;ramp-volume-foreground = ${color.cyan}
+
+format-muted-prefix = "ﱝ "
+format-muted-foreground = ${color.orange}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${color.yellowgreen}
+bar-volume-foreground-1 = ${color.yellowgreen}
+bar-volume-foreground-2 = ${color.yellowgreen}
+bar-volume-foreground-3 = ${color.yellowgreen}
+bar-volume-foreground-4 = ${color.yellowgreen}
+bar-volume-foreground-5 = ${color.orange}
+bar-volume-foreground-6 = ${color.red}
+bar-volume-gradient = false
+bar-volume-indicator = >
+bar-volume-indicator-foreground = ${color.cyan}
+bar-volume-indicator-font = 1
+bar-volume-fill = ─
+bar-volume-fill-font = 1
+bar-volume-empty = ─
+bar-volume-empty-font = 1
+bar-volume-empty-foreground = ${color.cyan}
+
+click-right = pavucontrol
