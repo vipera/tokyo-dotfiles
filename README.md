@@ -66,7 +66,7 @@ For bluetooth support:
 
 ## Preview
 
-![desktop preview][previews/preview_1.png]
+![preview](https://raw.githubusercontent.com/vipera/tokyo-dotfiles/master/previews/preview_1.png)
 
 ## Stuff you might need to adjust
 
